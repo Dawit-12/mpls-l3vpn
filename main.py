@@ -2,14 +2,16 @@ import csv
 import re
 
 from interface import Interface
-SOURCE_FILE = "C:\\Users\\SPECTRE 2017\\Downloads\\VPN customers\\KK_A_interface"
-DESTINATION_FILE = "C:\\Users\\SPECTRE 2017\\Downloads\\VPN customers\\new4.csv"
+from qos import Qos
+SOURCE_FILE = "C:\\Users\\dawit.mulugetae\\Documents\\github\\VPN customers\\NZ_B_interface"
+DESTINATION_FILE = "C:\\Users\\dawit.mulugetae\\Documents\\github\\output\\nz_b_interface.csv"
+SOURCE_QOS_FILE = "C:\\Users\\dawit.mulugetae\\Documents\\github\\VPN customers\\NZ_B_qos"
+DESTINATION_QOS_FILE = "C:\\Users\\dawit.mulugetae\\Documents\\github\\output\\nz_b_QOS.csv"
+# interface = Interface(SOURCE_FILE)
+# interface.generate_interface(DESTINATION_FILE)
 
-interface = Interface(SOURCE_FILE)
-interface.generate_interface(DESTINATION_FILE)
-
-
-
+qos = Qos(SOURCE_QOS_FILE)
+qos.generate_qos(DESTINATION_QOS_FILE)
 
 string = "  description 70100272370-TSEHAY INSURANCE S.C-12-DEC-2019"
 

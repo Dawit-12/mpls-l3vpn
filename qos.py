@@ -1,17 +1,20 @@
 import csv
 
-SOURCE_FILE = "C:\\Users\\SPECTRE 2017\\Downloads\\VPN customers\\KK_A_qos"
-DESTINATION_FILE = "C:\\Users\\SPECTRE 2017\\Downloads\\VPN customers\\qos.csv"
 
-with open(SOURCE_FILE) as file:
-    data = file.read().split("$")
+class Qos:
+    def __init__(self, source_file):
+        self.source = source_file
+        self.destination = None
+        with open(self.source) as file:
+            data = file.read().split("$")
 
-new_list = [item.split("\n") for item in data]
-print(new_list)
+        self.new_list = [item.split("\n") for item in data]
 
-with open(DESTINATION_FILE, "w", newline='') as file:
-    data = csv.writer(file)
-    for item in new_list:
-        if not item[0].strip():
-            item.pop(0)
-        data.writerow(item)
+    def generate_qos(self, destination_file):
+        self.destination = destination_file
+        with open(self.destination, "w", newline='') as file:
+            data_1 = csv.writer(file)
+            for item in self.new_list:
+                if not item[0].strip():
+                    item.pop(0)
+                data_1.writerow(item)

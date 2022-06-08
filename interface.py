@@ -50,7 +50,12 @@ class Interface:
                     if "  ip vrf forwarding DATA" not in item and \
                             "  ip vrf forwarding VIPVPN" not in item \
                             and "  ip vrf forwarding UPLOAD-ONLY" not in item \
-                            and item[0].startswith("interface smartgroup1.") and (item[3].endswith("/29") or item[3].endswith("/30")):
+                            and (item[0].startswith("interface smartgroup1.") or
+                                 item[0].startswith("interface smartgroup7.") or
+                                 item[0].startswith("interface smartgroup9.") or
+                                 item[0].startswith("interface smartgroup10.") or
+                                 item[0].startswith("interface smartgroup11.")) and \
+                            (item[3].endswith("/29") or item[3].endswith("/30")):
                         if item[1] != '' or item[2] != '':
                             item.remove("")
                             file.writerow(item)
